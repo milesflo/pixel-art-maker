@@ -1,23 +1,39 @@
-// var body = getElementsByTagName('body');
-// body.style.marginTop = "0";
+var currentColor = null;
 
 function makeDiv(color) {
   	var div = null;
 	div = document.createElement('div');
-	div.style.width = "9.555%";
+	div.style.width = "4.6%";
 	div.style.height = "width";
-	div.style.float= "left";
-	div.style.paddingBottom = "9.555555%";
+	div.style.float = "left";
+	div.style.paddingBottom = "4.6%";
 	div.style.backgroundColor = color;
-	div.style.border = "1px solid black";
+	div.style.border = "1px solid #C4C3FD";
+	div.addEventListener("click", colorChange)
   	return div;
 }
 
 
-function newBG(color) {
-	for (var i = 0; i < 110; i++) {
-	  document.body.appendChild(makeDiv(color));
+function blankSlate(color) {
+	for (var i = 0; i < 400; i++) {
+	  var div = makeDiv(color);
+	  div.id = i;
+	  document.body.appendChild(div);
 	}
 }
 
-newBG("white");
+//======================
+var box = document.getElementsByTagName('div');
+
+function colorChange (event) {
+	event.target.style.backgroundColor = "red";
+}
+
+
+//=========================
+
+// function reColor(color) {
+// 	var targetBox = 
+// }
+
+blankSlate("white");
