@@ -25,7 +25,7 @@ function pallette(amount) {
 }
 
 function blankSlate(color) {
-	for (var i = 0; i < 1000; i++) {
+	for (var i = 0; i < 1073; i++) {
 	  var div = makeDiv(color);
 	  div.id = i;
 	  div.addEventListener("click", paint);
@@ -39,6 +39,9 @@ function paint (event) {
 
 function colorChange (event) {
 	currentColor = event.target.style.backgroundColor;
+	document.getElementById("pallette36").style.backgroundColor=currentColor;
+	document.getElementById("pallette36").style.border= "1px solid black";
+	document.getElementById("pallette36").style.margin= "0";
 }
 
 
@@ -48,7 +51,7 @@ function colorChange (event) {
 // 	var targetBox = 
 // }
 function init() {
-	pallette(36);
+	pallette(37);
 	blankSlate("white");
 	document.getElementById("pallette0").style.backgroundColor="#fdfdfd";
 	document.getElementById("pallette1").style.backgroundColor="#ddd";
@@ -93,6 +96,8 @@ function init() {
 	document.getElementById("pallette33").style.backgroundColor="#ff00ff";
 	document.getElementById("pallette34").style.backgroundColor="#cc00cc";
 	document.getElementById("pallette35").style.backgroundColor="#80007f";
+
+
 }
 
 init();
