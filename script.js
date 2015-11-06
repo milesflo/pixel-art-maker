@@ -9,6 +9,7 @@ function makeDiv(color) {
 	div.style.paddingBottom = "2.3%";
 	div.style.backgroundColor = color;
 	div.style.border = "1px solid #C4C3FD";
+  	div.ondragstart = "paint";
   	return div;
 }
 
@@ -28,22 +29,25 @@ function blankSlate(color) {
 	for (var i = 0; i < 1073; i++) {
 	  var div = makeDiv(color);
 	  div.id = i;
-	  div.addEventListener("click", paint);
+	  div.addEventListener("click", paintSingle);
+	  div.addEventListener("ondragstart", paintDrag);
 	  document.body.appendChild(div);
 	}
 }
 
-function paint (event) {
+function paintSingle (event) {
+	event.target.style.backgroundColor = currentColor;
+}
+
+function paintDrag (event) {
 	event.target.style.backgroundColor = currentColor;
 }
 
 function colorChange (event) {
 	currentColor = event.target.style.backgroundColor;
+	//So the user knows which color is currently selected
 	document.getElementById("pallette36").style.backgroundColor=currentColor;
-	document.getElementById("pallette36").style.border= "1px solid black";
-	document.getElementById("pallette36").style.margin= "0";
 }
-
 
 //=========================
 
@@ -96,6 +100,10 @@ function init() {
 	document.getElementById("pallette33").style.backgroundColor="#ff00ff";
 	document.getElementById("pallette34").style.backgroundColor="#cc00cc";
 	document.getElementById("pallette35").style.backgroundColor="#80007f";
+	
+	document.getElementById("pallette36").style.backgroundColor="red";
+	document.getElementById("pallette36").style.border="1px solid black";
+	document.getElementById("pallette36").style.margin="0";
 
 
 }
